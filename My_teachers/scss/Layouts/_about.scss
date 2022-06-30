@@ -1,0 +1,27 @@
+.about {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  & .about-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    & .about-col {
+      padding: 0;
+
+      & .superHeadLine {
+        @include styleText(
+          $fs-3,
+          $fw-2,
+          $color-purple,
+          "Montserrat"
+        );
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+      & .headLine {
+        @include styleText(3.8rem, 700, inherit, "Montserrat");
+      }
+    }
+  }
+}

@@ -1,0 +1,151 @@
+// header {
+//   background-color: $color-transparent;
+//   box-shadow: 0 2px 4px $color-white-2;
+//   width: 100%;
+//   z-index: 10;
+//   // overflow: hidden;
+//   & .logo{
+//     display:inline-block;
+//   }
+
+//   & ul li {
+//     display: inline;
+//     list-style-type: none;
+//   }
+//   & div.navbar{
+//     display:inline-block;
+//     margin-left:100px;
+//   }
+//   & nav.navbar{
+//     background:transparent
+//   }
+//   & .menu-contact{
+//     display:inline-block;
+//   }
+//   & .menu-contact-item{
+//     display:flex;
+//   }
+
+// .navbar-nav li:hover > ul.dropdown-menu {
+//   display: block;
+// }
+// .dropdown-submenu {
+//   position:relative;
+// }
+// .dropdown-submenu>.dropdown-menu {
+//   top:0;
+//   /*left:-100%;*/
+//   left:-10rem; /* 10rem is the min-width of dropdown-menu */
+//   margin-top:-6px;
+// }
+
+// /* rotate caret on hover */
+// .dropdown-menu > li > a:hover:after {
+//   text-decoration: underline;
+//   transform: rotate(-90deg);
+// }
+
+// & .indicator{
+//    position: absolute;
+//   bottom:0px;
+//   left: 48px;
+//   height: 10px;
+//   width: 10px;
+//   border: 6px solid $color-purple;
+//   border-radius: 50%;
+//   transform: translateX(-50%);
+//   transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+//   z-index:100
+// }
+
+// & li.nav-item{
+//   margin-left:30px;
+// }
+// }
+
+//responsive
+@include responsive("large-down") {
+  //Nội dung bên trong cặp ngoặc nhọn của responsive sẽ được đưa vào mixin thông qua @content
+  header {
+    #phoneNavbar {
+      .nav-link {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.navigation-links-nav {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.navigation-links-text1,
+.navigation-links-text2,
+.navigation-links-text3,
+.navigation-links-text4,
+.navigation-links-text5 {
+  margin-left: 60px;
+}
+.navigation-links-text5 {
+  margin-right: 80px;
+}
+
+.header-wave {
+  position: absolute;
+  z-index: -1;
+
+  display: block;
+  width: 100%;
+}
+.header {
+  width: 100%;
+  display: flex;
+  max-width: 1200px;
+  align-items: center;
+
+  justify-content: space-between;
+  .nav {
+    display: flex;
+    position: relative;
+    left: 76px;
+    & .dropdown-menu li:hover .sub-menu {
+      visibility: visible;
+    }
+
+    & .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+  }
+  .contact-group {
+    display: flex;
+    align-items: center;
+
+    .contact-group-icon {
+      margin-left: 12px;
+      color: #000;
+    }
+    & i {
+      font-size: 15px;
+    }
+  }
+  li.dropdown {
+    height: 90px;
+    display: flex;
+    align-items: center;
+  }
+  a.dropdown-toggle {
+    color: #000;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  li.dropdown:hover .dropdown-menu {
+    display: flex !important;
+    gap: 20px;
+    width: 500px;
+    left: -200px;
+    top: 80px;
+    justify-content: space-around;
+  }
+}

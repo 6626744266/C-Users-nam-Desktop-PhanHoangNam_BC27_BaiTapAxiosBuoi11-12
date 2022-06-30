@@ -1,0 +1,97 @@
+.course .container {
+  padding-top: 60px;
+}
+.course {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  & .row {
+    & .course-col {
+      padding: 0;
+
+      &.col-xl-6 {
+        margin: 30px 0;
+      }
+      &.col-xl-5 {
+        margin-top: 80px;
+        display: flex;
+        justify-content: flex-end;
+        & .course-headline span {
+          @include styleText($fs-7, $fw-3, #191919);
+        }
+        & .course-headline {
+          text-align: center;
+          margin-bottom: 30px;
+          margin-top: 20px;
+        }
+        & .col-content {
+          height: 90%;
+          border: 1px solid #000;
+          border-radius: 10px;
+          width: 85%;
+        }
+      }
+    }
+  }
+
+  & .form-group {
+    position: relative;
+    margin-bottom: 0;
+    &.col-md-6 {
+      margin-bottom: 0;
+      margin-top: 15px;
+      padding: 0;
+    }
+  }
+  & .icon {
+    position: absolute;
+    padding: 10px;
+    color: $color-purple;
+  }
+
+  & input,
+  .custom-select {
+    padding-left: 30px;
+  }
+  & .fa-graduation-cap {
+    position: relative;
+    top: 30px;
+    left: 10px;
+    color: $color-purple;
+  }
+
+  & .input-message {
+    margin: 0 auto;
+    margin-top: 20px !important;
+  }
+  & .select-course,
+  .input-message {
+    margin: 0 auto;
+    width: 80%;
+  }
+}
+
+.message {
+  width: 100%;
+}
+
+.input-name-email {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.contactButton {
+  margin-top: 40px;
+  width: 100%;
+  & .button {
+    width: 80%;
+    margin: 0 auto;
+  }
+  & input {
+    height: 3.5em;
+    width: 150px;
+    padding:13px;
+  }
+}

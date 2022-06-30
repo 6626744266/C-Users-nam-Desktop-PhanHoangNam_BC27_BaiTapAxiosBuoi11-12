@@ -1,0 +1,24 @@
+//Import tất cả những file scss vào đây
+
+//Helpers
+@import "./Helpers/variables";
+@import "./Helpers/mixin";
+
+//Vendors
+
+//Base
+@import "./Base/reset";
+
+//Component
+@import "./Components/button";
+@import "./Components/card";
+
+//Layout
+@import "./Layouts/carousel";
+@import "./Layouts/footer";
+@import "./Layouts/header";
+@import "./Layouts/product";
+@import "./Layouts/about";
+@import "./Layouts/teachers";
+@import "./Layouts/course";
+

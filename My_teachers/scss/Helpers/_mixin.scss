@@ -1,0 +1,38 @@
+//Mixin style cho các text
+
+@mixin styleText($fs, $fw, $color, $font-family:null) {
+  font-size: $fs;
+  font-weight: $fw;
+  color: $color;
+  font-family: $font-family;
+}
+
+@mixin responsive($screen) {
+  //Kiểm tra xem giá trị của biến $screen có tồn tại trong danh sách $breakpoints hay không thông qua hàm map-has-key
+  @if (map-has-key($map: $breakpoints, $key: $screen)) {
+    //tạo biến $value thông qua hàm map-get, dựa vào giá trị key là $screen để lấy value bên trong danh sách $breakpoints
+    $value: map-get(
+      $map: $breakpoints,
+      $key: $screen,
+    );
+    @media screen and (max-width: $value) {
+      //Nội dung bên trong cặp ngoặc nhọn khi sử dụng mixin sẽ được đưa vào vị trí của @content
+      @content;
+    }
+  } @else {
+    @warn "màn hình chưa khai báo";
+  }
+}
+
+@mixin styleButton($bg, $color, $radius) {
+  background: $bg;
+  color: $color;
+  border-radius: $radius;
+}
+
+@mixin styleButtonHover($bg, $color, $border, $btn-transition) {
+  background: $bg;
+  color: $color;
+  border: $border;
+  transition: $btn-transition;
+}

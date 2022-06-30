@@ -1,0 +1,14 @@
+- Base: chứa những file chỉnh sửa lại mặc định của trình duyệt hoặc thư viện
+ +VD: mặc định các thẻ h1 -> h5, p đều có margin bottom
+
+
+ - Helpers: chứa những file variables, mixin, extend, function, ...
+
+ -Components: chứa những file phần tử nhỏ bên trong giao diện, vd: button,card, dropdown, link,...
+
+
+ - Layouts: chứa những file thành phần lớn được cấu tạo từ nhiều thành phần nhỏ như Header, Carousel, footer, sidebar,...
+
+ - Pages: chứa những file cho một page cụ thể. vd: home, about, blogs ,...
+
+

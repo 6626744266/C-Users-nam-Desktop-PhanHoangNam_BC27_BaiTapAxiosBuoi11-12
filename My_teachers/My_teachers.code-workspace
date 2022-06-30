@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\Javascript_axios_QLTT"
+		},
+		{
+			"path": "..\\..\\Downloads\\QuanLyNhanVien\\QuanLyNhanVien"
+		},
+		{
+			"path": "..\\..\\Downloads\\10-06-2022-05-25-26-bt_qlsp_buoi14 (1)"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Javascript_axios_QLTT"
+	}
+}
