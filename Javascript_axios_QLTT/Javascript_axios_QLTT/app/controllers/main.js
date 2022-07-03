@@ -1,5 +1,5 @@
-var userList = []
 main()
+const url = "https://62bb0738573ca8f832912e50.mockapi.io/Users"
 
 
 function main() {
@@ -19,9 +19,8 @@ function main() {
                     user.moTa,
                     user.hinhAnh,
                 )
-                userList.push(users[i])
             }
-
+            console.log(users)
 
             display(users)
         })
@@ -29,7 +28,11 @@ function main() {
             console.log(error);
         })
 }
-console.log(userList)
+
+
+
+
+
 function display(users) {
     var html = ``;
     for (var i = 0; i < users.length; i++) {
@@ -82,6 +85,28 @@ function resetForm() {
         elems[i].style.display = 'none';
     }
 }
+async function validationDuplicateAdd() {
+    var taiKhoan = document.getElementById("TaiKhoan").value;
+
+    const isDuplicate = await checkDuplicate(taiKhoan);
+    console.log(isDuplicate)
+    if (isDuplicate === true) {
+        document.getElementById('tbTKND').innerHTML = "Tài khoản đã tồn tại";
+        document.getElementById('tbTKND').style = "display:block";
+        validationAdd()
+    }
+    else if (isDuplicate === false) {
+        console.log("first")
+        document.getElementById('tbTKND').innerHTML = "";
+        document.getElementById('tbTKND').style = "display:none";
+        addUser();
+
+    }
+}
+
+
+
+
 
 
 function addUser() {
@@ -97,6 +122,7 @@ function addUser() {
     var user = new User(null, taiKhoan, hoTen, matKhau, email, loaiND, ngonNgu, moTa, hinhAnh)
     validationAdd(user)
     if (validationAdd(user) !== false) {
+
         apiAddUser(user)
             .then((result) => {
                 main()
@@ -114,12 +140,14 @@ function addUser() {
 
 }
 
+
+
 document.querySelector(".modal-footer").addEventListener("click", handleClick)
 function handleClick(event) {
     var btnType = event.target.getAttribute("btn-type")
     switch (btnType) {
         case "add":
-            addUser()
+            validationDuplicateAdd()
             break;
         case "update":
             updateUser()
@@ -156,6 +184,8 @@ function showUpdateModal(userId) {
     resetForm();
     document.getElementById("btnThemND").disabled = true;
     document.getElementById("btnCapNhat").disabled = false;
+    document.getElementById("TaiKhoan").disabled = true
+
 
     apiGetUserDetail(userId)
         .then((result) => {
@@ -187,10 +217,8 @@ function updateUser() {
     var loaiND = document.getElementById("loaiNguoiDung").value;
     var ngonNgu = document.getElementById("loaiNgonNgu").value;
     var moTa = document.getElementById("MoTa").value;
-
     var user = new User(id, taiKhoan, hoTen, matKhau, email, loaiND, ngonNgu, moTa, hinhAnh)
     validationUpdate(user)
-    console.log(validationUpdate(user))
     if (validationUpdate(user) !== false) {
         apiUpdateUser(user)
             .then((result) => {
@@ -232,30 +260,36 @@ function handleUserAction(event) {
 }
 
 
-
 //  Validation
-function checkDuplicate(TaiKhoan) {
 
-    console.log(userList[0].taiKhoan)
+const checkDuplicate = (TaiKhoan) => {
+    return axios({
+        url: url,
+        method: 'get',
+    })
+        .then((res) => {
+            var users = res.data
 
-    for (var i = 0; i < userList.length; i++) {
-        console.log(userList[i].taiKhoan)
-        if (userList[i].taiKhoan === TaiKhoan) {
-            return true
-        }
-        else {
-            return false
-        }
-    }
+            const index = users.findIndex((user) => {
+                console.log(user.taiKhoan)
+                console.log(TaiKhoan)
+                return user.taiKhoan.trim().toLowerCase() === TaiKhoan.trim().toLowerCase()
+            })
+            console.log(index)
+            if (index === -1) {
+                return false
+            }
+            else {
+                return true
+            }
 
-
-
+        })
+        .catch((error) => {
+            console.log(error)
+        })
 }
 
 
-
-
-console.log(checkDuplicate("jroberts"))
 
 
 
@@ -285,6 +319,17 @@ function maxLength(value, limit) {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
 function validationAdd(user) {
     var taiKhoan = document.getElementById("TaiKhoan").value;
     var hoTen = document.getElementById("HoTen").value;
@@ -296,23 +341,9 @@ function validationAdd(user) {
     var moTa = document.getElementById("MoTa").value;
     var isValid = true;
 
-    //Kiểm tra tài khoản nhập vào có hợp lệ hay không
-    if (!isRequired(taiKhoan)) {
-        isValid = false;
-        document.getElementById('tbTKND').innerHTML = "Tài khoản không được để trống";
-        document.getElementById('tbTKND').style = "display:block";
-    }
 
-    else if (checkDuplicate(taiKhoan)) {
-        isValid = false;
-        document.getElementById('tbTKND').innerHTML = "Tài khoản đã tồn tại";
-        document.getElementById('tbTKND').style = "display:block";
-    }
-    else {
-        document.getElementById('tbTKND').innerHTML = "";
-        document.getElementById('tbTKND').style = "display:none";
 
-    }
+
 
 
 
