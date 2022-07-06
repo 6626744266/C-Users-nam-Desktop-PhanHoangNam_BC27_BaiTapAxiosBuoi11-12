@@ -116,31 +116,29 @@ body {
   width: 100%;
 }
 .footer .footer-bg-up {
-  top: -470px;
+  top: -375px;
   width: 100%;
 }
 
-@media screen and (max-width: 991.98px) {
-  header #phoneNavbar .nav-link {
-    text-align: center;
-  }
-}
 .navigation-links-nav {
   display: flex;
   align-items: center;
   flex-direction: row;
 }
 
-.navigation-links-text1,
-.navigation-links-text2,
-.navigation-links-text3,
-.navigation-links-text4,
-.navigation-links-text5 {
-  margin-left: 60px;
+.navigation-links-text2 {
+  padding-right: 60px;
+  font-size: 13px;
 }
 
-.navigation-links-text5 {
-  margin-right: 80px;
+.navigation-links-text1 {
+  margin-right: 60px;
+  font-size: 13px;
+}
+
+.navigation-links-text2::after,
+.navigation-links-text1::after {
+  display: none;
 }
 
 .header-wave {
@@ -167,6 +165,24 @@ body {
 }
 .header .nav .dropdown:hover .dropdown-menu {
   display: block;
+  max-width: 780px;
+  width: 780px;
+}
+.header .nav .dropdown:hover .dropdown-menu .first-col,
+.header .nav .dropdown:hover .dropdown-menu .second-col,
+.header .nav .dropdown:hover .dropdown-menu .third-col {
+  width: 33.3333333333%;
+  display: flex;
+  flex-direction: column;
+}
+.header .nav .dropdown:hover .dropdown-menu .first-col li,
+.header .nav .dropdown:hover .dropdown-menu .second-col li,
+.header .nav .dropdown:hover .dropdown-menu .third-col li {
+  margin-left: 20px;
+  border-bottom: 1px solid;
+}
+.header .nav .dropdown:hover .dropdown-menu .third-col {
+  margin-right: 20px;
 }
 .header .contact-group {
   display: flex;
@@ -179,11 +195,6 @@ body {
 .header .contact-group i {
   font-size: 15px;
 }
-.header li.dropdown {
-  height: 90px;
-  display: flex;
-  align-items: center;
-}
 .header a.dropdown-toggle {
   color: #000;
 }
@@ -194,9 +205,107 @@ body {
   display: flex !important;
   gap: 20px;
   width: 500px;
-  left: -200px;
+  left: -350px;
   top: 80px;
   justify-content: space-around;
+}
+.header li.dropdown:hover .dropdown-menu li a {
+  color: #000;
+  font-weight: 600;
+}
+.header li.dropdown:hover .dropdown-menu li a:hover {
+  text-decoration: none;
+  color: #b61984;
+}
+.header li.dropdown:hover .dropdown-menu.dropdown-menu-2 {
+  width: 220px;
+  left: 0px;
+}
+.header li.dropdown:hover .dropdown-menu.dropdown-menu-2 .first-col {
+  width: 91%;
+}
+.header li.dropdown:hover .dropdown-menu.dropdown-menu-2 li {
+  margin-right: 20px;
+}
+.header li.dropdown:hover .dropdown-menu.dropdown-menu-3 {
+  width: 220px;
+  left: -144px;
+}
+.header li.dropdown:hover .dropdown-menu.dropdown-menu-3 .first-col {
+  width: 91%;
+}
+.header li.dropdown:hover .dropdown-menu.dropdown-menu-3 li {
+  margin-right: 20px;
+}
+.header .home-image {
+  left: -107px;
+  position: relative;
+}
+.header .border-purple {
+  border-bottom: 3px solid #b61984 !important;
+}
+.header .border-normal {
+  border-bottom: 0.1px solid grey !important;
+}
+.header .border-bold {
+  border-bottom: 1px solid grey !important;
+}
+.header .border-none {
+  border-bottom: 0px !important;
+}
+.header .indicator {
+  position: absolute;
+  top: -14px;
+  left: 48px;
+  height: 36px;
+  width: 36px;
+  background-color: #fff;
+  border: 6px solid #4070f4;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.header .indicator::before,
+.header .indicator::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  height: 24px;
+  width: 19px;
+}
+.header .indicator::before {
+  left: -22px;
+  background-color: #fff;
+  border-top-right-radius: 25px;
+  box-shadow: 1px -13px #4070f4;
+}
+.header .indicator::after {
+  right: -22px;
+  background-color: #fff;
+  border-top-left-radius: 25px;
+  box-shadow: -1px -13px #4070f4;
+}
+
+.header li.dropdown {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.header li.dropdown:hover::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  z-index: 299;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #b83b3b;
+  display: inline-block;
+  margin: 0 10px;
+}
+.header li.dropdown.dropdown-2:hover::after {
+  left: 7px;
 }
 
 .about {
@@ -267,7 +376,7 @@ body {
   z-index: -1;
 }
 .teachers .teachers-bg-up {
-  top: -146px;
+  top: -85px;
   width: 100%;
 }
 .teachers .teachers-bg-down {
@@ -410,10 +519,3 @@ body {
   width: 150px;
   padding: 13px;
 }/*# sourceMappingURL=main.css.map */
-
-
-.sp-thongbao{
-  color: red;
-  margin-left: 2px;
-  display: none;
-}
